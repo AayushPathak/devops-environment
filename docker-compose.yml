@@ -1,0 +1,10 @@
+version: '3'
+services:
+  jenkins:
+    stdin_open: false
+    build: .
+    ports:
+      - "5000:8080"
+    volumes:
+      - /var/jenkins_home:/var/jenkins_home #mounting the jenkins_home directory to be able to restore data if I rebuild the container
+      - /var/run/docker.sock:/var/run/docker.sock #linking the docker CLI from the host. Container talks to the host daemon
